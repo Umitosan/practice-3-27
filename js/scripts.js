@@ -3,8 +3,6 @@ $(document).ready(function() {
   $("#formOne").submit(function(event){
   event.preventDefault();
 
-
-
   var groArr = [];
 
   groArr.push($("#input1").val());
@@ -29,25 +27,34 @@ $(document).ready(function() {
   $("#formTwo").submit(function(event){
     event.preventDefault();
 
-    var initialWd = $("#words1").val();
-    var splitWd = initialWd.split(" ");
-    console.log(splitWd);
+    var initialArray = $("#words1").val();
+    var splitArray = initialArray.split(" ");
 
-    var wdThree = [];
+    console.log("splitArray: " , splitArray);
 
-    splitWd.map(function(tmpindex) {
+    // make a new array containing only the words with 3 or less letters
+    var arrLessThree = [];
+    splitArray.map(function(tmpindex) {
       if (tmpindex.length <= 3) {
-        wdThree.push(tmpindex);
-        console.log(tmpindex);
-      } else {
-        return 0;
+        arrLessThree.push(tmpindex);
       }
     });
 
-    console.log("wdThree: " + wdThree);
+    console.log("arrLessThree: " , arrLessThree);
 
-    $("#poetry").text(initialWd);
-    $("#poetry2").text(wdThree);
+    // reverse the array
+    var reverseArray = arrLessThree.reverse();
+    console.log("reverseArray: " , reverseArray);
+
+    // Join all words into a new array for the final sentence
+    var joinedArray = reverseArray.join(" ");
+    console.log("joinedArray: " , joinedArray);
+    console.log(joinedArray);
+
+    // Print all 3 spans with new array data
+    $("#poetry").text(initialArray);
+    $("#poetry2").text(arrLessThree);
+    $("#poetry3").text(joinedArray);
 
   });
 
