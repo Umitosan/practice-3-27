@@ -40,9 +40,9 @@ $(document).ready(function() {
       } else {
         console.log("not 3");
       }
-      console.log("wdThree: " + wdThree);
-
     });
+
+    console.log("wdThree: " + wdThree);
     $("#poetry").text(initialWd);
 
   });
